@@ -67,9 +67,7 @@ include './dbcon.php';
 
 include './dbcon.php';
 if (isset($_POST["but"])) {
-    echo "<script type='text/javascript'> alert('dss') </script>";
     $notification = $_POST["notification"];
-    echo "<script type='text/javascript'> alert($notification) </script>";
     $sql = "UPDATE `notification` SET `message`='$notification'  WHERE `id`= $notificationId";
     $result = $conn->query($sql);
     if ($result===TRUE) {
