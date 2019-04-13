@@ -69,7 +69,7 @@
 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="companyapprove.php">
+                        <a class="nav-link" href="userapprove.php">
                             <span class="menu-title">Approve Donors </span>
                             <i class="mdi mdi-home menu-icon"></i>
                         </a>
