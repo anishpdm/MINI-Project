@@ -36,11 +36,10 @@ $(document).ready(function(){
                                     while ($row = $result->fetch_assoc()) {
                                     $message = $row["message"];
                                     $id = $row["id"];
-                                    echo " <tr> <td id='$id'> $message </td> </tr>  ";
+                                    echo " <tr> <td id='$id'> $message </td> <td>  <Button class='btn btn-success' value='$id' name='but'> Delete </Button> </td> </tr>  ";
                                     }
                                     echo "</table> ";
                                 }
-
                             ?>
                             <div class='row'></div>
                 </div>
@@ -65,3 +64,18 @@ $(document).ready(function(){
 <!-- End custom js for this page-->
 </body>
 </html> 
+<?php
+
+include './dbcon.php';
+if (isset($_POST["but"])) {
+
+    $id = $_POST["but"];
+    $sql = "DELETE FROM `notification` WHERE `notification`.`id` = $id";
+    $result = $conn->query($sql);
+    if ($result===TRUE) {
+        echo "<script type='text/javascript'> alert(' Notification Deleted Successfully') </script>";
+    } else {
+        echo "<script type='text/javascript'> alert('Error') </script>";
+    }
+}
+?>
