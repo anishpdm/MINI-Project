@@ -15,7 +15,7 @@ if (isset($_POST["but"])) {
     
 
 
-        echo "<script type='text/javascript'> window.location.href='userapprove.php.php' </script>";
+        echo "<script type='text/javascript'> window.location.href='userapprove.php' </script>";
     } else {
         echo "<script type='text/javascript'> alert('LogIn Failed') </script>";
     }
