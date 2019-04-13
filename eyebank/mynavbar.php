@@ -69,7 +69,7 @@
 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="companyapprove.php">
+                        <a class="nav-link" href="donornavbar.php">
                             <span class="menu-title">Approve Donors </span>
                             <i class="mdi mdi-home menu-icon"></i>
                         </a>
@@ -89,7 +89,7 @@
                         </a>
                         <div class="collapse" id="qnpaper">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="#"> Post Notifications  </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="notifications.php"> Post Notifications  </a></li>
 
                             </ul>
                         </div>
