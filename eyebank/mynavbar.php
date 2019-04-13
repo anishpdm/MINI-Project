@@ -74,13 +74,6 @@
                             <i class="mdi mdi-home menu-icon"></i>
                         </a>
                     </li>
-
-               
-
-
-                    
-
-
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#qnpaper" aria-expanded="false" aria-controls="students">
                             <span class="menu-title"> Notifications </span>
@@ -89,16 +82,14 @@
                         </a>
                         <div class="collapse" id="qnpaper">
                             <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="adminNotificationList.php">View Notifications </a></li>
+
+                            </ul>
+                            <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" href="notifications.php"> Post Notifications  </a></li>
 
                             </ul>
                         </div>
                     </li>
-
-
-
-
-
-
                 </ul>
             </nav> 
