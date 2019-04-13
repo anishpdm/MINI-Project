@@ -14,7 +14,7 @@ include './dbcon.php';
                         <form class="form-sample" method="POST">
                             <p class="card-description"></p>
                             <?php
-                                $sql = "SELECT `id`, `message` FROM `notification`";
+                                $sql = "SELECT  `message` FROM `notification`";
                                 $result = $conn->query($sql);
                                 if ($result->num_rows > 0) {
                                     echo "<form method='POST'> <table class='table'>  ";
