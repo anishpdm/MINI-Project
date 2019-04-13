@@ -1,8 +1,23 @@
 <?php
 include './mynavbar.php';
 include './dbcon.php';
-?>
 
+
+?>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('table tr').click( function (x) {
+        var closestTr = $(this).closest("tr") 
+        // var $item = closestTr  // Finds the closest row <tr> 
+        //             .text();   
+        var notificationId = closestTr
+                    .find('td[id]')
+                    .attr("id");
+        window.location.href="editNotification.php?id="+notificationId;
+        });
+});
+</script>
 <!-- partial -->
 <div class="main-panel">
     <div class="content-wrapper">
@@ -11,7 +26,6 @@ include './dbcon.php';
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title"> Notifications </h4>
-                        <form class="form-sample" method="POST">
                             <p class="card-description"></p>
                             <?php
                                 $sql = "SELECT `id`, `message` FROM `notification`";
@@ -21,14 +35,14 @@ include './dbcon.php';
                                     // output data of each row
                                     while ($row = $result->fetch_assoc()) {
                                     $message = $row["message"];
-                                    echo " <tr> <td> $message </td> </tr>  ";
+                                    $id = $row["id"];
+                                    echo " <tr> <td id='$id'> $message </td> </tr>  ";
                                     }
                                     echo "</table> ";
                                 }
 
                             ?>
                             <div class='row'></div>
-                    </form>
                 </div>
             </div>
         </div>
