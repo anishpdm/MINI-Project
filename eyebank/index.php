@@ -15,7 +15,7 @@ if (isset($_POST["but"])) {
     
 
 
-        echo "<script type='text/javascript'> window.location.href='userapprove.php.php' </script>";
+        echo "<script type='text/javascript'> window.location.href='userapprove.php' </script>";
     } else {
         echo "<script type='text/javascript'> alert('LogIn Failed') </script>";
     }
@@ -71,7 +71,7 @@ if (isset($_POST["but"])) {
                                     <button class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" name="but"> SIGN IN </button>
                                     <a class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" href="userlogin.php"> User LogIn   </a>
                                     <a class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" href="userreg.php"> User Registration   </a>
-
+                                    <a cxlass="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" href="guest.php"> Guest  </a>
                                     <!-- <a class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" href="index.html">SIGN IN</a> -->
                                 </div>
 
