@@ -53,35 +53,50 @@ ob_start();
                             <form action="" method="post">
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input class="au-input au-input--full" type="text" name="name" placeholder="Full Name">
+                                    <input class="au-input au-input--full" type="text" name="name" placeholder="Full Name" pattern="[A-Za-z]+" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Username</label>
-                                    <input class="au-input au-input--full" type="text" name="username" placeholder="Username">
+                                    <input class="au-input au-input--full" type="text" name="username" placeholder="Username" required>
                                 </div>
                                 <div class="form-group">
                                         <label>Password</label>
-                                        <input class="au-input au-input--full" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="must contain 6 or more characters" type="password" name="psw_one" placeholder="Password">
+                                        <input class="au-input au-input--full" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="must contain 6 or more characters" type="password" name="psw_one" placeholder="Password" required>
                                 </div>
                                 <div class="form-group">
                                         <label>Password</label>
-                                        <input class="au-input au-input--full" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="must contain 6 or more characters" type="password" name="psw_two" placeholder="Re-Enter Password">
+                                        <input class="au-input au-input--full" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="must contain 6 or more characters" type="password" name="psw_two" placeholder="Re-Enter Password" required>
                                     </div>
                                 <div class="form-group">
                                         <label>Phone number</label>
-                                        <input class="au-input au-input--full" type="tel" name="phone" placeholder="Phone Number">
+                                        <input class="au-input au-input--full" type="text" name="phone" placeholder="Phone Number" pattern="[6789]{1}[0-9]{9}" required>
                                         </div>
                                 <div class="form-group">
                                         <label>Address</label>
-                                        <input class="au-input au-input--full" type="text" name="address" placeholder="Address">
+                                        <input class="au-input au-input--full" type="text" name="address" placeholder="Address" required>
                                 </div>
                                 <div class="form-group">
                                         <label>Place</label>
-                                        <input class="au-input au-input--full" type="text" name="place" placeholder="District">
-                                </div>
+                                        <select name="place" class="au-input au-input--full">
+                                            <option value="Alappuzha"> Alappuzha </option>
+                                            <option value="Ernakulam"> Ernakulam </option>
+                                            <option value="Idukki"> Idukki </option>
+                                            <option value="Kannur"> Kannur </option>
+                                            <option value="Kasaragod"> Kasaragod </option>
+                                            <option value="Kollam"> Kollam </option>
+                                            <option value="Kottayam"> Kottayam </option>
+                                            <option value="Kozhikode"> Kozhikode </option>
+                                            <option value="Malappuram"> Malappuram </option>
+                                            <option value="Palakkad"> Palakkad </option>
+                                            <option value="Pathanamthitta"> Pathanamthitta </option>
+                                            <option value="Thiruvananthapuram"> Thiruvananthapuram </option>
+                                            <option value="Thrissur"> Thrissur </option>
+                                            <option value="Wayanad"> Wayanad </option>
+                                            
+                                        </select>                                </div>
                                 <div class="form-group">
                                         <label>Pin-Code</label>
-                                        <input class="au-input au-input--full" type="number" name="pin" placeholder="Pin-Code">
+                                        <input class="au-input au-input--full" type="number" name="pin" placeholder="Pin-Code"  pattern="[6]{1}[0-9]{5}" required>
                                 </div>
                                 <!-- <div class="login-checkbox">
                                     <label>
@@ -159,8 +174,15 @@ ob_start();
             }
             $response = $conn->query($query);
             if($response){
+                echo "<script> alert('Registration succesful. ')</script>"; 
+
                 header('Location:../login.html');
             }
+        }
+        else{
+
+            echo "<script> alert('Password and Confirm Password doesnt match')</script>"; 
+
         }
     }
     ?>

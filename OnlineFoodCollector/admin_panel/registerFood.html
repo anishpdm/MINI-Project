@@ -52,15 +52,16 @@ ob_start();
                         <div class="login-form">
                             <form action="" method="post">
                                 <div class="form-group">
-                                    <label>Member ID</label>
-                                    <input class="au-input au-input--full" type="text" name="member_id" value="<?php 
+                                    <label></label>
+                                    <input  class="au-input au-input--full" type="hidden" name="member_id" value="<?php 
                                         session_start();
                                         echo $_SESSION['memb_id']
                                     ?>" placeholder="Member ID">
                                 </div>
                                 <div class="form-group">
                                     <label>Food Details</label>
-                                    <input class="au-input au-input--full" type="text" name="food_details" placeholder="Enter Food Details">
+                                    <textarea class="form-control" placeholder="Enter Food Details" name="food_details"  cols="15" rows="5" required></textarea>
+
                                 </div>
                                 <!-- <div class="login-checkbox">
                                     <label>
@@ -118,7 +119,10 @@ ob_start();
                 VALUES('".$member_id."','".$food_details."',Now(),0)";  
                 $response = $conn->query($query);
                 if($response){
-                    header('Location:./index3.html');
+
+    echo " <script> alert('Succesfully Submitted the Food Details') </script> ";
+
+    echo " <script> window.location.href='index3.html'  </script> ";
                 }
     }
     ?>

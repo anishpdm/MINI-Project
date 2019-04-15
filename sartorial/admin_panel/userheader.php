@@ -166,6 +166,10 @@ ob_start();
                                 <li>
                                     <a href="applybenefits.php">Apply Benifits</a>
                                 </li>
+
+                                <li>
+                                    <a href="premiumstatus.php">Remittance Details</a>
+                                </li>
                                
                                 <li>
                                     <a href="benifit_status.php">View Status<span>
@@ -173,6 +177,10 @@ ob_start();
                                             $_SESSION['ADMIN_CREATE'] = 1;
                                         ?>
                                     </span></a>
+                                </li>
+
+                                <li>
+                                    <a href="paypremium.php"> Premium Details</a>
                                 </li>
                             </ul>
                         </li>

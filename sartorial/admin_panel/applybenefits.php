@@ -47,7 +47,7 @@ include './userheader.php';
                             </td>
                             
                             <td>
-                                <select name="benefits">
+                                <select class='form-control' name="benefits">
         <option value="Marriage Benefits"> Marriage Benefits </option>
          <option value="Maternity Benefits"> Maternity Benefits </option>
          <option value="Treatement Benefits"> Treatement Benefits </option>
@@ -63,7 +63,7 @@ include './userheader.php';
                                  <label>Amount</label>
                             </td>
                             <td>
-                                         <input type="number" name="amount" placeholder="Amount">  
+                                         <input class='form-control'  type="number" name="amount" placeholder="Amount" pattern="[0-9]{}" required >  
                             </td>
                         </tr>
                         

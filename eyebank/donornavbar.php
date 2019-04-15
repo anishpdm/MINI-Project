@@ -74,6 +74,12 @@
                             <i class="mdi mdi-home menu-icon"></i>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="usersearch.php">
+                            <span class="menu-title"> Search   </span>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="userNotifications.php">
                             <span class="menu-title"> Notifications  </span>

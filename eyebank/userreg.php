@@ -82,33 +82,40 @@ if (isset($_POST["but"])) {
                             </h6>
                             <form class="pt-3" method="POST">
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder=" name" name="cname">
+                                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder=" name" name="cname" pattern="[A-Za-z]+" required >
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="address" name="address">
+                                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="address" name="address" required >
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Blood group" name="bgroup">
+                                <select class='form-control' name='bgroup' >
+     <option value='A+'>A+</option>
+     <option value='A-'>A-</option>
+     <option value='B+''>B+</option>
+     <option value='B-'>B-</option>
+     <option value='AB+'>AB+</option>
+     <option value='AB-'>AB-</option>
+     </select>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="pincode" name="cpin">
+                                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="pincode" name="cpin" pattern="[6]{1}[0-9]{5}" required>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Mobile number " name="mob">
+                                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Mobile number " name="mob" pattern="[6789]{1}[0-9]{9}" required >
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email Id" name="email">
+                                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email Id" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Enter username" name="Username">
+                                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Enter username" name="Username" required>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Enter Password" name="Password">
+                                    <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Enter Password" name="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
                                 </div>
                                 <div class="mt-3">
                                     <button class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" name="but"> REGISTER </button>

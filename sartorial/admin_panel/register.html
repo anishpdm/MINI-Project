@@ -188,8 +188,15 @@ ob_start();
             }
             $response = $conn->query($query);
             if($response){
+                echo "<script> alert('Registration succesful. ')</script>"; 
+
                 header('Location:../loginUSER.html');
             }
+        }
+        else{
+
+            echo "<script> alert('Password and Confirm Password doesnt match')</script>"; 
+
         }
     }
     ?>

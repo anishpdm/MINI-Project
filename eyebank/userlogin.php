@@ -74,8 +74,8 @@ while($row=$result->fetch_assoc()){
                                 <div class="mt-3">
                                     <button class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" name="but"> SIGN IN </button>
                                     <a class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" href="index.php"> Admin LogIn   </a>
-                                    <a cxlass="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" href="userreg.php"> User Registration   </a>
-                                    <a cxlass="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" href="guest.php"> Guest  </a>
+                                    <a class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" href="userreg.php"> User Registration   </a>
+                                    <a class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" href="guest.php"> Guest  </a>
 
                                     <!-- <a class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" href="index.html">SIGN IN</a> -->
                                 </div>

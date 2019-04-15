@@ -166,6 +166,10 @@ ob_start();
                                 <li>
                                     <a href="approvetrans.php">Approve Transactions</a>
                                 </li>
+
+                                <li>
+                                    <a href="viewremittance.php">View Remittances</a>
+                                </li>
                                 <!-- <li>
                                     <a href="index3.html">All Users</a>
                                 </li> -->
