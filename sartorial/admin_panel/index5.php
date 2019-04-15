@@ -161,10 +161,10 @@ ob_start();
                                 <i class="fas fa-tachometer-alt"></i>Functions</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="index.html">Approve Users</a>
+                                    <a href="index5.php">Approve Users</a>
                                 </li>
                                 <li>
-                                    <a href="index.html">Approve Transactions</a>
+                                    <a href="approvetrans.php">Approve Transactions</a>
                                 </li>
                                 <!-- <li>
                                     <a href="index3.html">All Users</a>
@@ -257,6 +257,7 @@ ob_start();
                                                 <th class="text-right">Email</th>
                                                 <th class="text-right">Phone</th>
                                                 <th class="text-right">Approve</th>
+                                                <th class="text-right">Reject</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -272,7 +273,7 @@ ob_start();
                                                     //creating mysql connection
                                                     $conn = new mysqli($dbhost,$dbUser,$dbPass,$dbName);
                                                     //query
-                                                    $query = "select * from members where status = 0;";
+                                                    $query = "select * from members where status = 0";
                                         
                                                     $response = $conn->query($query);
                                                     if($response){
@@ -282,8 +283,14 @@ ob_start();
                                                                     <td>".$result['emailid']."</td>
                                                                     <td>".$result['phonenum']."</td>
                                                                     <form method=POST action=./update.php>
-                                                                    <td><button style=background-color:rgb(0,255,34); name=id value=$result[id]>Approve</button></td>
+                                                                    <td><button class='btn btn-success' name=id value=$result[id]>Approve</button></td>
+                                                                    
+
                                                                     </form>
+                                                                    
+                                                                    <form method='POST'> 
+                                                             <td><button type='submit' class='btn btn-warning' name='rejbutton' value=$result[id]>Reject</button></td>
+                                                                    </form> 
                                                                 </tr>";
                                                         }
                                                         echo "</table>";
@@ -344,3 +351,30 @@ ob_start();
 
 </html>
  <!-- end document -->
+
+ 
+ <?php
+ 
+ if(isset($_POST['rejbutton']) ){
+ 
+     $Id=$_POST['rejbutton'];
+ 
+     $dbhost = "localhost";
+            $dbUser = "root";
+            $dbPass = "";
+            $dbName = "sartorial_space";
+            //creating mysql connection
+            $conn = new mysqli($dbhost,$dbUser,$dbPass,$dbName);
+ $sql="DELETE FROM `members` WHERE `id`=$Id ";
+ 
+ $result=$conn->query($sql);
+ 
+ if($result===TRUE){
+    echo "<script> alert('Rejected succesfully')</script>"; 
+ }
+ 
+ 
+ 
+ }
+ 
+ ?>

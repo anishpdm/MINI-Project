@@ -149,9 +149,9 @@ ob_start();
          <!-- MENU SIDEBAR -->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="#">
-                    <img src="images/icon/logo.png" alt="Cool Admin" />
-                </a>
+               
+              <h3>   Sartorial Space  </h3>
+               
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
@@ -161,16 +161,14 @@ ob_start();
                                 <i class="fas fa-tachometer-alt"></i>Functions</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="index5.html">Approve Users</a>
+                                    <a href="userprofile.php"> Users Profile</a>
                                 </li>
                                 <li>
-                                    <a href="index.html">Approve Transactions</a>
+                                    <a href="applybenefits.php">Apply Benifits</a>
                                 </li>
-                                <!-- <li>
-                                    <a href="index3.html">All Users</a>
-                                </li> -->
+                               
                                 <li>
-                                    <a href="register.html">Add new user<span>
+                                    <a href="benifit_status.php">View Status<span>
                                         <?php
                                             $_SESSION['ADMIN_CREATE'] = 1;
                                         ?>
@@ -200,7 +198,7 @@ ob_start();
                                         <div class="content">
                                             <a class="js-acc-btn" href="#"><?php
                                                 session_start();
-                                                echo $_SESSION['username'];
+                                                echo $_SESSION['uname'];
                                                 ?></a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
@@ -212,7 +210,7 @@ ob_start();
                                                 <div class="content">
                                                     <h5 class="name">
                                                         <a href="#"><?php
-                                                            echo $_SESSION['username'];
+                                                            echo $_SESSION['uname'];
                                                             ?></a>
                                                     </h5>
                                                 </div>
@@ -229,111 +227,3 @@ ob_start();
                     </div>
                 </div>
             </header>
-             HEADER DESKTOP
-
-             MAIN CONTENT
-            <div class="main-content">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h2 class="title-1 m-b-25">Users</h2>
-                                <div class="table-responsive table--no-card m-b-40">
-                                    <table class="table table-borderless table-striped table-earning">
-                                        <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Age</th>
-                                                <th>Address</th>
-                                                <th>District</th>
-                                                <th>Pincode</th>
-                                                <th class="text-right">Email</th>
-                                                <th class="text-right">Phone</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <?php
-                                                // echo "<h1>".$_SESSION['username']."</h1>";
-                                                if($_SESSION['username']){
-                                                    //database properties
-                                                    $dbhost = "localhost";
-                                                    $dbUser = "root";
-                                                    $dbPass = "";
-                                                    $dbName = "sartorial_space";
-                                        
-                                                    //creating mysql connection
-                                                    $conn = new mysqli($dbhost,$dbUser,$dbPass,$dbName);
-                                                    //query
-                                                    $query = "select * from members";
-                                        
-                                                    $response = $conn->query($query);
-                                                    if($response){
-                                                        while($result = $response->fetch_assoc()){
-                                                            echo"<tr>
-                                                                    <td>".$result['name']."</td>
-                                                                    <td>".$result['age']."</td>
-                                                                    <td>".$result['address']."</td>
-                                                                    <td>".$result['district']."</td>
-                                                                    <td>".$result['pincode']."</td>
-                                                                    <td>".$result['emailid']."</td>
-                                                                    <td>".$result['phonenum']."</td>
-                                                                </tr>";
-                                                        }
-                                                        echo "</table>";
-                                                    }
-                                                }
-                                                else{
-                                                    header('Location:Admin_panel.php');
-                                                }
-                                                ?>
-                                            <!-- <tr>
-                                                <td>2018-09-29 05:57</td>
-                                                <td>100398</td>
-                                                <td>iPhone X 64Gb Grey</td>
-                                                <td class="text-right">$999.00</td>
-                                                <td class="text-right">1</td>
-                                                <td class="text-right">$999.00</td>
-                                            </tr> -->
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-     <!-- Jquery JS -->
-    <script src="vendor/jquery-3.2.1.min.js"></script>
-     <!-- Bootstrap JS -->
-    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
-    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
-     <!-- Vendor JS        -->
-    <script src="vendor/slick/slick.min.js">
-    </script>
-    <script src="vendor/wow/wow.min.js"></script>
-    <script src="vendor/animsition/animsition.min.js"></script>
-    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
-    </script>
-    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="vendor/counter-up/jquery.counterup.min.js">
-    </script>
-    <script src="vendor/circle-progress/circle-progress.min.js"></script>
-    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="vendor/select2/select2.min.js">
-    </script>
-
-     <!-- Main JS -->
-    <script src="js/main.js"></script>
-    <!-- <?php
-
-    echo 'hahahah';
-    ?> -->
-
-</body>
-
-</html>
- <!-- end document -->

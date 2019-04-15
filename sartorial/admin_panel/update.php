@@ -6,10 +6,10 @@ ob_start();
             $dbName = "sartorial_space";
             //creating mysql connection
             $conn = new mysqli($dbhost,$dbUser,$dbPass,$dbName);
-            $query = "update members SET status=1,approved_date = Now() where id='".$_POST['id']."';";                            
+            $query = "update members SET status=1,approved_date =now() where id='".$_POST['id']."';";                            
             $response = $conn->query($query);
             if($response){
-                header('Location:index5.html');
+                header('Location:index5.php');
             }
 /* 
  * To change this license header, choose License Headers in Project Properties.
