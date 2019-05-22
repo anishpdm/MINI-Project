@@ -1,7 +1,7 @@
 
            <?php
            include 'adminheader.php';
-           
+
            ?>
             <div class="main-content">
                 <div class="section__content section__content--p30">
@@ -14,7 +14,10 @@
                                         <thead>
                                             <tr>
                                                 <th>member name </th>
-                                                <th>Food Details</th>
+                                                <th>Food Type</th>
+                                                <th>Qty</th>
+                                                <th>Description</th>
+
                                                  <th>Added date</th>
                                                 <th >Approve</th>
 
@@ -30,25 +33,29 @@
                                                     $dbUser = "root";
                                                     $dbPass = "";
                                                     $dbName = "foodcollector";
-                                        
+
                                                     //creating mysql connection
                                                     $conn = new mysqli($dbhost,$dbUser,$dbPass,$dbName);
                                                     //query
-                                                    $query = "select f.id,m.name,f.food__details,f.added_date from fooddetails f join members m on m.id=f.member_id where acknowledgement =0";
-                                        
+                                                    $query = "select f.id,m.name,f.type, f.quantity,f.description,f.added_date from fooddetails f join members m on m.id=f.member_id where acknowledgement =0";
+
                                                     $response = $conn->query($query);
                                                     if($response){
                                                         while($result = $response->fetch_assoc()){
                                                             echo"<tr>
                                                                     <td>".$result['name']."</td>
-                                                                    <td>".$result['food__details']."</td>
+                                                                    <td>".$result['type']."</td>
+                                                                    <td>".$result['quantity']."</td>
+                                                                    <td>".$result['description']."</td>
+
+
                                                                     <td>".$result['added_date']."</td>
                                                                     <form method=POST action=./updateFood.php>
                                                                         <td><button class='btn btn-success' name=id value=$result[id]>Approve</button></td>
                                                                         </form>
-                                                                        <form method='POST'> 
+                                                                        <form method='POST'>
                                                                             <td><button type='submit' class='btn btn-warning' name='rejbutton' value=$result[id]>Reject</button></td>
-                                                                                   </form> 
+                                                                                   </form>
 
                                                                 </tr>";
                                                         }
@@ -114,11 +121,11 @@
 
 
  <?php
- 
+
  if(isset($_POST['rejbutton']) ){
- 
+
      $Id=$_POST['rejbutton'];
- 
+
      $dbhost = "localhost";
             $dbUser = "root";
             $dbPass = "";
@@ -126,17 +133,17 @@
             //creating mysql connection
             $conn = new mysqli($dbhost,$dbUser,$dbPass,$dbName);
  $sql="UPDATE `fooddetails` SET  `acknowledgement`=-1 WHERE `id`=$Id ";
- 
- $result=$conn->query($sql);
- 
- if($result===TRUE){
-    echo "<script> alert('Rejected succesfully')</script>"; 
 
-    echo "<script> window.location.href='approveFood.html'</script>"; 
+ $result=$conn->query($sql);
+
+ if($result===TRUE){
+    echo "<script> alert('Rejected succesfully')</script>";
+
+    echo "<script> window.location.href='approveFood.html'</script>";
  }
- 
- 
- 
+
+
+
  }
- 
+
  ?>

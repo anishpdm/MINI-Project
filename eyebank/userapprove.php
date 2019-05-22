@@ -23,19 +23,21 @@ include './dbcon.php';
 
 
 
-$sql = "SELECT  id,`name`, `address`, `blood_group`, `pin_code`, `mobile`, `email` FROM `user` WHERE `status`=0";
+$sql = "SELECT  id,`name`, `streetname`, `housename`, `blood_group`, `pin_code`, `mobile`, `email` FROM `user` WHERE `status`=0";
   $result = $conn->query($sql);
 
   if ($result->num_rows > 0) {
     echo "<form method='POST'> <table class='table'>  ";
 
-    echo " <tr> <th>  NAME</th> <th> Address </th><th> blood group </th> <th> PinCode </th> <th> Mobile </th> <th>  Email </th> <th> Action </th> </tr>  ";
+        echo " <tr> <th>  NAME</th> <th> House name  </th><th> Street name </th>  <th> blood group </th> <th> PinCode </th> <th> Mobile </th> <th>  Email </th> <th> Action </th> </tr>  ";
 
-    
+
     // output data of each row
     while ($row = $result->fetch_assoc()) {
       $name = $row["name"];
-      $address = $row["address"];
+      $address = $row["housename"];
+
+      $streetname = $row["streetname"];
 
       $blood_group = $row["blood_group"];
 
@@ -47,13 +49,13 @@ $sql = "SELECT  id,`name`, `address`, `blood_group`, `pin_code`, `mobile`, `emai
 
       $id = $row["id"];
 
-     
-
-     
 
 
-     echo " <tr>  <td> $name </td>  <td> $address </td> <td> $blood_group </td>  <td> $pincode </td>  <td> $mobile </td> <td> $email </td>  <td>  <Button class='btn btn-success' value='$id' name='but'> Approve </Button> </td>    </tr>  ";
-   
+
+
+
+     echo " <tr>  <td> $name </td>  <td> $address </td><td> $streetname </td> <td> $blood_group </td>  <td> $pincode </td>  <td> $mobile </td> <td> $email </td>  <td>  <Button class='btn btn-success' value='$id' name='but'> Approve </Button> </td> <td>  <Button class='btn btn-success' value='$id' name='rejbut'> Reject </Button> </td>    </tr>  ";
+
 
 
 
@@ -70,7 +72,7 @@ $sql = "SELECT  id,`name`, `address`, `blood_group`, `pin_code`, `mobile`, `emai
 
 ?>
                             <div class='row'>
-                                
+
 
 
                     </div>
@@ -105,7 +107,7 @@ $sql = "SELECT  id,`name`, `address`, `blood_group`, `pin_code`, `mobile`, `emai
 <!-- End custom js for this page-->
 </body>
 
-</html> 
+</html>
 
 <?php
 
@@ -113,7 +115,7 @@ include './dbcon.php';
 if (isset($_POST["but"])) {
 
     $id = $_POST["but"];
-   
+
 
     $sql = "UPDATE `user` SET `status`=1 WHERE `id`= $id";
 
@@ -121,14 +123,38 @@ if (isset($_POST["but"])) {
 
     if ($result===TRUE) {
 
-       
+
         echo "<script type='text/javascript'> alert(' Donor Approved Succesfully') </script>";
 
         // echo "<script type='text/javascript'> alert('Succcess') </script>";
 
         echo "<script type='text/javascript'> window.location.href='userapprove.php' </script>";
     } else {
-    
+
+        echo "<script type='text/javascript'> alert('Error') </script>";
+    }
+}
+
+
+if (isset($_POST["rejbut"])) {
+
+    $id = $_POST["rejbut"];
+
+
+    $sql = "UPDATE `user` SET `status`=-1 WHERE `id`= $id";
+
+    $result = $conn->query($sql);
+
+    if ($result===TRUE) {
+
+
+        echo "<script type='text/javascript'> alert(' Donor Approved Succesfully') </script>";
+
+        // echo "<script type='text/javascript'> alert('Succcess') </script>";
+
+        echo "<script type='text/javascript'> window.location.href='userapprove.php' </script>";
+    } else {
+
         echo "<script type='text/javascript'> alert('Error') </script>";
     }
 }

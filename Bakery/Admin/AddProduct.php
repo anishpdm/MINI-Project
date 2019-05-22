@@ -59,6 +59,11 @@
                             <a href="AddProduct.php">
                                 <i class="fas fa-circle-o-notch"></i>Add Products</a>
                         </li>
+
+                        <li>
+                            <a href="vieworders.php">
+                                <i class="fas fa-circle-o-notch"></i>View Orders </a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -139,10 +144,10 @@
             <!-- MAIN CONTENT-->
             <div class="main-content">
                 <div class="section__content section__content--p30">
-                    <div class="container-fluid">                        
+                    <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-12">
-                                
+
                             </div>
                         </div>
                         <div class="container">
@@ -151,10 +156,10 @@
                         <div class="login-logo">
                         </div>
                         <div class="login-form">
-                        <form action="" method="post">
+                        <form action="" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label>Category</label>
-                                    <select class="form-control" id="exampleFormControlSelect1">
+                                    <select class="form-control" id="exampleFormControlSelect1" name='catoption'>
                                         <?php
                                       //database properties
                                                     include '../dbConnection.php';
@@ -162,11 +167,15 @@
                                                     $conn = new mysqli($dbhost,$dbUser,$dbPass,$dbName);
                                                     //query
                                                     $query = "select * from category";
-                                        
+
                                                     $response = $conn->query($query);
                                                     if($response){
                                                         while($result = $response->fetch_assoc()){
-                                                        echo"<option>".$result['id']."</option>";
+
+                                                          $optid=$result['id'];
+                                                          $category_name =$result['category_name'];
+
+                                                        echo"<option value='$optid'>  $category_name </option>";
                                                         }
                                                         echo "</select>";
                                                     }
@@ -178,7 +187,9 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Product photo</label>
-                                    <input class="au-input au-input--full" type="text" name="photo" placeholder="Product photo">
+
+                                    <input class="file-upload-browse btn btn-gradient-primary" type="file" name="fileToUpload" id="fileToUpload">
+
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
@@ -194,13 +205,7 @@
                     </div>
                 </div>
             </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="copyright">
-                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -238,13 +243,23 @@
     //creating mysql connection
     $conn = new mysqli($dbhost,$dbUser,$dbPass,$dbName);
     if($_SERVER['REQUEST_METHOD']==='POST'){
-        $id = $_POST['id'];
+        $id = $_POST['catoption'];
         $name = $_POST['name'];
-        $photo = $_POST['photo'];
+
+        $target_dir = "images/";
+        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        $tr=mysqli_real_escape_string($conn,$target_file);
+        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+        // echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+        } else {
+         //echo "Sorry, there was an error uploading your file.";
+        }
+
+
         $description = $_POST['description'];
         $price = $_POST['price'];
-                $query = "insert into products(category_id,product_name,product_pic1,description,price) 
-                VALUES('".$id."','".$name."','".$photo."','".$description."','".$price."')";  
+                $query = "insert into products(category_id,product_name,product_pic1,description,price)
+                VALUES('".$id."','".$name."','".$tr."','".$description."','".$price."')";
             $response = $conn->query($query);
             if($response){
                 header('Location:./index.php');

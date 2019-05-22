@@ -166,10 +166,14 @@ ob_start();
                                 <li>
                                     <a href="index6.html">Add Products</a>
                                 </li>
+
+                                <li>
+                                    <a href="vieworders.php"> View Orders </a>
+                                </li>
                                 <!-- <li>
                                     <a href="index3.html">All Users</a>
                                 </li> -->
-                               
+
                             </ul>
                         </li>
                     </ul>
@@ -248,35 +252,41 @@ ob_start();
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-12">
-                                
+
         <div class="page-content--bge5">
             <div class="container" style="background-color:white;">
                 <div class="login-wrap" >
                     <div class="login-content">
                         <div class="login-form">
-                            <form action="" method="post">
+                            <form action="" method="post" enctype="multipart/form-data" >
                                 <div class="form-group">
                                     <label>Category</label>
-                                    <select class="form-control" name=id id="exampleFormControlSelect1">
+                                    <select class="form-control" name='optid' id="exampleFormControlSelect1">
                                         <?php
                                       //database properties
                                                     $dbhost = "localhost";
                                                     $dbUser = "root";
                                                     $dbPass = "";
                                                     $dbName = "Herb";
-                                        
+
                                                     //creating mysql connection
                                                     $conn = new mysqli($dbhost,$dbUser,$dbPass,$dbName);
                                                     //query
                                                     $query = "select * from category";
-                                        
-                                                    $response = $conn->query($query);
-                                                    if($response){
-                                                        while($result = $response->fetch_assoc()){
-                                                        echo"<option name=id>".$result['id']."</option>";
-                                                        }
-                                                        echo "</select>";
-                                                    }
+
+                                  $response = $conn->query($query);
+                                  if($response){
+                                      while($result = $response->fetch_assoc()){
+
+                                        $optid=$result['id'];
+                                        $category_name =$result['category_name'];
+
+                                      echo"<option value='$optid'>  $category_name </option>";
+                                      }
+                                      echo "</select>";
+                                  }
+
+
                                       ?>
                                 </div>
                                 <div class="form-group">
@@ -285,7 +295,7 @@ ob_start();
                                 </div>
                                 <div class="form-group">
                                     <label>Product photo</label>
-                                    <input class="au-input au-input--full" type="text" name="photo" placeholder="Product photo">
+                                    <input class="file-upload-browse btn btn-gradient-primary" type="file" name="fileToUpload" id="fileToUpload">
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
@@ -298,9 +308,16 @@ ob_start();
                                 <div class="form-group">
                                     <label>Desease Two</label>
                                     <input class="au-input au-input--full" type="text" name="disease2" placeholder="Disease">
-                                </div><div class="form-group">
+                                </div>
+
+                                <div class="form-group">
                                     <label>Desease Three</label>
                                     <input class="au-input au-input--full" type="text" name="disease3" placeholder="Disease">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Price </label>
+                                    <input class="au-input au-input--full" type="text" name="price" placeholder="Price ">
                                 </div>
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">SUBMIT</button>
                             </form>
@@ -350,15 +367,28 @@ ob_start();
     //creating mysql connection
     $conn = new mysqli($dbhost,$dbUser,$dbPass,$dbName);
     if($_SERVER['REQUEST_METHOD']==='POST'){
-        $id = $_POST['id'];
+
+
+        $target_dir = "images/";
+        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        $tr=mysqli_real_escape_string($conn,$target_file);
+        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+        // echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+        } else {
+         //echo "Sorry, there was an error uploading your file.";
+        }
+
+        $id = $_POST['optid'];
         $name = $_POST['name'];
-        $photo = $_POST['photo'];
+
         $description = $_POST['description'];
         $disease1 = $_POST['disease1'];
         $disease2 = $_POST['disease2'];
         $disease3 = $_POST['disease3'];
-            $query = "insert into products(category_id,product_name,product_pic,product_description,disease_1,disease_2,disease_3)VALUES('".$id."','".$name."','".$photo."','".$description."','".$disease1."','".$disease2."','".$disease3."')";  
-            
+        $price=$_POST['price'];
+
+            $query = "insert into products(category_id,product_name,product_pic,product_description,disease_1,disease_2,disease_3,price)VALUES('".$id."','".$name."','".$tr."','".$description."','".$disease1."','".$disease2."','".$disease3."',$price)";
+
             $response = $conn->query($query);
             if($response){
                 header('Location:./index.html');

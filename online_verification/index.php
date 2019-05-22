@@ -12,10 +12,10 @@ if (isset($_POST["but"])) {
 
     if ($result->num_rows > 0) {
 
-    
 
 
-        echo "<script type='text/javascript'> window.location.href='companyapprove.php.php' </script>";
+
+        echo "<script type='text/javascript'> window.location.href='companyapprove.php' </script>";
     } else {
         echo "<script type='text/javascript'> alert('LogIn Failed') </script>";
     }
@@ -96,4 +96,4 @@ if (isset($_POST["but"])) {
     <!-- endinject -->
 </body>
 
-</html> 
+</html>

@@ -166,6 +166,10 @@ ob_start();
                                 <li>
                                     <a href="index6.html">Add Products</a>
                                 </li>
+
+                                <li>
+                                    <a href="vieworders.php"> View Orders </a>
+                                </li>
                                 <!-- <li>
                                     <a href="index3.html">All Users</a>
                                 </li> -->
@@ -237,12 +241,12 @@ ob_start();
                                                     $dbUser = "root";
                                                     $dbPass = "";
                                                     $dbName = "Herb";
-                                        
+
                                                     //creating mysql connection
                                                     $conn = new mysqli($dbhost,$dbUser,$dbPass,$dbName);
                                                     //query
                                                     $query = "select * from category";
-                                        
+
                                                     $response = $conn->query($query);
                                                     if($response){
                                                         while($result = $response->fetch_assoc()){
@@ -253,7 +257,7 @@ ob_start();
                                                         }
                                                         echo "</table>";
                                                     }
-                                                
+
                                                 ?>
                                             <!-- <tr>
                                                 <td>2018-09-29 05:57</td>
@@ -285,12 +289,12 @@ ob_start();
                                                     $dbUser = "root";
                                                     $dbPass = "";
                                                     $dbName = "Herb";
-                                        
+
                                                     //creating mysql connection
                                                     $conn = new mysqli($dbhost,$dbUser,$dbPass,$dbName);
                                                     //query
                                                     $query = "select * from products";
-                                        
+
                                                     $response = $conn->query($query);
                                                     if($response){
                                                         while($result = $response->fetch_assoc()){
@@ -301,7 +305,7 @@ ob_start();
                                                         }
                                                         echo "</table>";
                                                     }
-                        
+
                                                 ?>
                                             <!-- <tr>
                                                 <td>2018-09-29 05:57</td>

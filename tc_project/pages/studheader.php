@@ -69,6 +69,12 @@
           </li>
 
           <li class="nav-item">
+            <a class="nav-link " href="../pages/viewstatus.php">
+              <i class="ni ni-single-02 text-yellow"></i> View Certificate Status
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a class="nav-link " href="../pages/studLogIn.php">
               <i class="ni ni-single-02 text-yellow"></i> SignOut
             </a>

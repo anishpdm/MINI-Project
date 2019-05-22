@@ -28,19 +28,19 @@
       </button>
       <!-- Brand -->
       <a class="navbar-brand pt-0" href="#">
-      Online TC and CC 
+      Online TC and CC
       </a>
       <!-- User -->
-   
+
       <!-- Collapse -->
       <div class="collapse navbar-collapse" id="sidenav-collapse-main">
         <!-- Collapse header -->
         <div class="navbar-collapse-header d-md-none">
           <div class="row">
             <div class="col-6 collapse-brand">
-            
+
             </div>
-         
+
           </div>
         </div>
         <!-- Form -->
@@ -56,31 +56,38 @@
         </form>
         <!-- Navigation -->
         <ul class="navbar-nav">
-          
+
           <li class="nav-item">
             <a class="nav-link " href="../pages/studentCreate.php">
-              <i class="ni ni-single-02 text-yellow"></i> Student Entry  
+              <i class="ni ni-single-02 text-yellow"></i> Student Entry
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link " href="../pages/ClassInChargeEntry.php">
+              <i class="ni ni-single-02 text-yellow"></i> ClassInChargeEntry Entry  
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="#">
-              <i class="ni ni-single-02 text-yellow"></i> Approve Application 
+            <a class="nav-link " href="approveApp.php">
+              <i class="ni ni-single-02 text-yellow"></i> Approve Application
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link " href="login.php">
-              <i class="ni ni-single-02 text-yellow"></i> LogOut 
+              <i class="ni ni-single-02 text-yellow"></i> LogOut
             </a>
           </li>
-         
-         
+
+
         </ul>
-    
+
       </div>
     </div>
   </nav>
   <!-- Main content -->
   <div class="main-content">
     <!-- Top navbar -->
-   
+
     <!-- Header -->

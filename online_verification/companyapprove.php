@@ -31,7 +31,7 @@ $sql = "SELECT `id`, `company_name`, `company_regno`, `place`, `pincode` FROM `c
 
     echo " <tr> <th> Company NAME</th> <th> Register Number </th><th> Place </th> <th> PinCode </th> <th> Action </th> </tr>  ";
 
-    
+
     // output data of each row
     while ($row = $result->fetch_assoc()) {
       $company_name = $row["company_name"];
@@ -43,13 +43,18 @@ $sql = "SELECT `id`, `company_name`, `company_regno`, `place`, `pincode` FROM `c
 
       $id = $row["id"];
 
-     
-
-     
 
 
-     echo " <tr>  <td> $company_name </td>  <td> $company_regno </td> <td> $place </td>  <td> $pincode </td> <td>  <Button class='btn btn-success' value='$id' name='but'> Approve </Button> </td>    </tr>  ";
-   
+
+
+
+     echo " <tr>  <td> $company_name </td>  <td> $company_regno </td> <td> $place </td>  <td> $pincode </td>
+      <td>  <Button class='btn btn-success' value='$id' name='but'> Approve </Button> </td>
+
+        <td>  <Button class='btn btn-warning' value='$id' name='rejbut'> Reject  </Button> </td>
+
+        </tr>  ";
+
 
 
 
@@ -66,7 +71,7 @@ $sql = "SELECT `id`, `company_name`, `company_regno`, `place`, `pincode` FROM `c
 
 ?>
                             <div class='row'>
-                                
+
 
 
                     </div>
@@ -101,7 +106,7 @@ $sql = "SELECT `id`, `company_name`, `company_regno`, `place`, `pincode` FROM `c
 <!-- End custom js for this page-->
 </body>
 
-</html> 
+</html>
 
 <?php
 
@@ -109,7 +114,7 @@ include './dbcon.php';
 if (isset($_POST["but"])) {
 
     $id = $_POST["but"];
-   
+
 
     $sql = "UPDATE `company` SET `status`=1 where `id`= $id";
 
@@ -117,14 +122,40 @@ if (isset($_POST["but"])) {
 
     if ($result===TRUE) {
 
-       
+
         echo "<script type='text/javascript'> alert(' Company Approved Succesfully') </script>";
 
         // echo "<script type='text/javascript'> alert('Succcess') </script>";
 
         echo "<script type='text/javascript'> window.location.href='companyapprove.php' </script>";
     } else {
-    
+
+        echo "<script type='text/javascript'> alert('Error') </script>";
+    }
+}
+
+
+
+
+if (isset($_POST["rejbut"])) {
+
+    $id = $_POST["rejbut"];
+
+
+    $sql = "DELETE FROM `company` WHERE `id`= $id";
+
+    $result = $conn->query($sql);
+
+    if ($result===TRUE) {
+
+
+        echo "<script type='text/javascript'> alert(' Company Rejected Succesfully') </script>";
+
+        // echo "<script type='text/javascript'> alert('Succcess') </script>";
+
+        echo "<script type='text/javascript'> window.location.href='companyapprove.php' </script>";
+    } else {
+
         echo "<script type='text/javascript'> alert('Error') </script>";
     }
 }

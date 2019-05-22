@@ -546,10 +546,10 @@ ob_start();
             <!-- END WELCOME-->
 
             <!-- STATISTIC-->
-            
+
 <table class="table">
     <tr>
-    <th> Added Date </th>  <th> Food Item </th> <th> Status </th>
+    <th> Added Date </th>  <th> Food Type  </th>  <th> Food Description </th>  <th> Qty </th> <th> Status </th>
     </tr>
 
 <?php
@@ -563,7 +563,7 @@ $dbhost = "localhost";
             //creating mysql connection
             $conn = new mysqli($dbhost,$dbUser,$dbPass,$dbName);
 //query
-$query = "SELECT `food__details`, `added_date`, `acknowledgement` FROM `fooddetails` WHERE `member_id`=$id
+$query = "SELECT `type`, `quantity`, `description`, `added_date`, `acknowledgement` FROM `fooddetails` WHERE `member_id`=$id
 ";
 
 $response = $conn->query($query);
@@ -574,7 +574,12 @@ $status=$result['acknowledgement'];
 
         echo"<tr>
         <td>".$result['added_date']."</td>
-                <td>".$result['food__details']."</td>
+        <td>".$result['type']."</td>
+
+                <td>".$result['description']."</td>
+
+
+                    <td>".$result['quantity']."</td>
                 ";
 
                 if($status==1)
@@ -611,11 +616,11 @@ $status=$result['acknowledgement'];
             <!-- END STATISTIC-->
 
             <!-- STATISTIC CHART-->
-            
+
             <!-- END STATISTIC CHART-->
 
             <!-- DATA TABLE-->
-            
+
             <!-- COPYRIGHT-->
             <!-- <section class="p-t-60 p-b-20">
                 <div class="container">

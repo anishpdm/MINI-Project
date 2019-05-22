@@ -6,20 +6,44 @@ if (isset($_POST["but"])) {
     $Username = $_POST["Username"];
     $Password = $_POST["Password"];
 
-    $sql = "SELECT `id` FROM `user` WHERE `username`='$Username' and `password`='$Password' and `status`=1";
+  echo  $sql = "SELECT `id`,status FROM `user` WHERE `username`='$Username' and `password`='$Password' ";
 
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
 
-    
+
 while($row=$result->fetch_assoc()){
 
     $id=$row['id'];
     $_SESSION['Cid']=$id;
+
+
+    $status=$row['status'];
+
+    if($status==1){
+
+      echo "<script type='text/javascript'> window.location.href='userprofile.php' </script>";
+
+    }
+
+    else if($status==0)
+    {
+      echo "<script type='text/javascript'> alert('In Process') </script>";
+    //  echo "<script type='text/javascript'> window.location.href='userlogin.php' </script>";
+
+
+    }
+    else{
+      echo "<script type='text/javascript'> alert('Application Rejected') </script>";
+      echo "<script type='text/javascript'> window.location.href='userlogin.php' </script>";
+
+
+    }
+
+
 }
 
-        echo "<script type='text/javascript'> window.location.href='userprofile.php' </script>";
     } else {
         echo "<script type='text/javascript'> alert('LogIn Failed') </script>";
     }
@@ -49,6 +73,26 @@ while($row=$result->fetch_assoc()){
     <!-- endinject -->
     <!-- <link rel="shortcut icon" href="images/favicon.png" /> -->
 </head>
+
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" href="#"></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="userlogin.php">LogIn</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="gallery.html">Gallery</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="aboutus.html">About Us</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="contact.html">Contact Us</a>
+    </li>
+  </ul>
+</nav>
 
 <body>
     <div class="container-scroller">
@@ -101,4 +145,4 @@ while($row=$result->fetch_assoc()){
     <!-- endinject -->
 </body>
 
-</html> 
+</html>

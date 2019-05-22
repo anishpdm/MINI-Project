@@ -59,6 +59,13 @@
                             <a href="AddWaterTax.php">
                                 <i class="fas fa-circle-o-notch"></i>add water Tax</a>
                         </li>
+
+                        <li>
+                            <a href="generatebills.php">
+                                <i class="fas fa-circle-o-notch "></i> Generate Bills </a>
+                        </li>
+
+
                         <li>
                             <a href="register.php">
                                 <i class="fas fa-circle-o-notch "></i>Add User</a>
@@ -143,10 +150,10 @@
             <!-- MAIN CONTENT-->
             <div class="main-content">
                 <div class="section__content section__content--p30">
-                    <div class="container-fluid">                        
+                    <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-12">
-                                
+
                             </div>
                         </div>
                         <div class="container">
@@ -155,52 +162,19 @@
                         <div class="login-logo">
                         </div>
                         <div class="login-form">
-                        <form action="" method="post">
+                        <form  method="post">
                                 <div class="form-group">
-                                    <label>User Id</label>
-                                    <select class="form-control" id="exampleFormControlSelect1">
-                                        <?php
-                                      //database properties
-                                                    include '../dbConnection.php';
-                                                    //creating mysql connection
-                                                    $conn = new mysqli($dbhost,$dbUser,$dbPass,$dbName);
-                                                    //query
-                                                    $query = "select * from user";
-                                        
-                                                    $response = $conn->query($query);
-                                                    if($response){
-                                                        while($result = $response->fetch_assoc()){
-                                                        echo"<option>".$result['id']."</option>";
-                                                        }
-                                                        echo "</select>";
-                                                    }
-                                      ?>
+                                    <label>Unit Price </label>
+                                    <input type="text" name="unit" pattern="[0-9]+"  placeholder="Enter unit price here" required >
                                 </div>
-                                <div class="form-group">
-                                    <label>Month</label>
-                                    <input class="au-input au-input--full" type="text" name="month" placeholder="Month">
-                                </div>
-                                <div class="form-group">
-                                    <label>Year</label>
-                                    <input class="au-input au-input--full" type="text" name="year" placeholder="Year">
-                                </div>
-                                <div class="form-group">
-                                    <label>Amount</label>
-                                    <input class="au-input au-input--full" type="text" name="amount" placeholder="Amount">
-                                </div>
+
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">SUBMIT</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="copyright">
-                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -238,17 +212,22 @@
     //creating mysql connection
     $conn = new mysqli($dbhost,$dbUser,$dbPass,$dbName);
     if($_SERVER['REQUEST_METHOD']==='POST'){
-        $id = $_POST['id'];
-        $month = $_POST['month'];
-        $year = $_POST['year'];
-        $amount = $_POST['amount'];
-                $query = "insert into bills(user_id,month,year,amount) 
-                VALUES('".$id."','".$month."','".$year."','".$amount."')";  
+        $id = $_POST['unit'];
+
+                $query = "INSERT INTO `unitprice`( `unitprice`) VALUES ($id)";
             $response = $conn->query($query);
             if($response){
+              echo "<script type='text/javascript'> alert('Unit price Succesfully ') </script>";
+
+
                 header('Location:./index.php');
             }
-        
+            else{
+              echo "<script type='text/javascript'> alert('Error') </script>";
+
+
+            }
+
     }
     ?>
 

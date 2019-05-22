@@ -164,7 +164,7 @@ ob_start();
                                     <a href="index5.html">Approve Patients</a>
                                 </li>
                                 <li>
-                                    <a href="index.html">Approve Expenses</a>
+                                    <a href="approvebenifits.php">Approve Requests </a>
                                 </li>
                                 <!-- <li>
                                     <a href="index3.html">All Users</a>
@@ -199,7 +199,7 @@ ob_start();
                                         </div>
                                         <div class="content">
                                             <a class="js-acc-btn" href="#"><?php
-                                                
+
                                                 session_start();
                                                 echo $_SESSION['username'];
                                                 ?></a>
@@ -261,6 +261,9 @@ ob_start();
                                                 <th class="text-right">doctor_name</th>
                                                 <th class="text-right">cancer_stage</th>
                                                 <th class="text-right">Approve</th>
+
+                                                <th class="text-right">Reject </th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -273,7 +276,7 @@ ob_start();
                                                     $conn = new mysqli($dbhost,$dbUser,$dbPass,$dbName);
                                                     //query
                                                     $query = "select * from patients where status = 0;";
-                                        
+
                                                     $response = $conn->query($query);
                                                     if($response){
                                                         while($result = $response->fetch_assoc()){
@@ -281,8 +284,10 @@ ob_start();
                                                                     <td>".$result['patient_name']."</td>
                                                                     <td>".$result['doctor_name']."</td>
                                                                     <td>".$result['cancer_stage']."</td>
-                                                                    <form method=POST action=./update.php>
-                                                                    <td><button style=background-color:rgb(0,255,34); name=id value=$result[id]>Approve</button></td>
+                                                                    <form method=POST >
+                                                                    <td><button class='btn btn-success' name='aprbutton' value=$result[id]>Approve</button></td>
+                                                                    <td><button class='btn btn-warning' name='rejbutton' value=$result[id]>Reject </button></td>
+
                                                                     </form>
                                                                 </tr>";
                                                         }
@@ -343,4 +348,71 @@ ob_start();
 </body>
 
 </html>
+
+
+
+ <?php
+
+ if(isset($_POST['aprbutton']) ){
+
+     $Id=$_POST['aprbutton'];
+
+     $dbhost = "localhost";
+            $dbUser = "root";
+            $dbPass = "";
+            $dbName = "cancer_patient_portal";
+            //creating mysql connection
+            $conn = new mysqli($dbhost,$dbUser,$dbPass,$dbName);
+ $sql="UPDATE `patients` SET `status`=1 WHERE `id`=$Id ";
+
+ $result=$conn->query($sql);
+
+ if($result===TRUE){
+    echo "<script> alert('Accepted succesfully')</script>";
+
+    echo "<script> window.location.href='index5.html'</script>";
+
+ }
+ else{
+   echo "<script> alert('Error')</script>";
+
+
+ }
+
+
+
+ }
+
+ if(isset($_POST['rejbutton']) ){
+
+     $Id=$_POST['rejbutton'];
+
+     $dbhost = "localhost";
+            $dbUser = "root";
+            $dbPass = "";
+            $dbName = "cancer_patient_portal";
+            //creating mysql connection
+            $conn = new mysqli($dbhost,$dbUser,$dbPass,$dbName);
+ $sql="DELETE FROM `patients` WHERE `id`=$Id ";
+
+ $result=$conn->query($sql);
+
+ if($result===TRUE){
+    echo "<script> alert('Rejected succesfully')</script>";
+    echo "<script> window.location.href='index5.html'</script>";
+
+ }
+ else{
+   echo "<script> alert('Error')</script>";
+
+
+ }
+
+
+
+ }
+
+ ?>
+
+
  <!-- end document -->

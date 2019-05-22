@@ -24,7 +24,7 @@
     <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
       <div class="container px-4">
         <a class="navbar-brand" href="../index.html">
-        
+
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-main" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -47,7 +47,7 @@
             </div>
           </div>
           <!-- Navbar items -->
-         
+
         </div>
       </div>
     </nav>
@@ -77,12 +77,12 @@
             <div class="card-header bg-transparent pb-5">
               <div class="text-muted text-center mt-2 mb-3"> </div>
               <div class="btn-wrapper text-center">
-               ADMINISTARTOR 
+               PRINCIPAL
               </div>
             </div>
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-             
+
               </div>
               <form method="POST">
                 <div class="form-group mb-3">
@@ -101,7 +101,7 @@
                     <input class="form-control" placeholder="Password" type="password" name="Password">
                   </div>
                 </div>
-                
+
                 <div class="text-center">
                   <button type="submit" name="but" class="btn btn-primary my-4">Sign in</button>
                 </div>
@@ -115,13 +115,17 @@
             <div class="col-6 text-right">
               <a href="login.php" class="text-light"><small>Admin LogIn </small></a>
             </div>
+
+            <div class="col-6 text-right">
+              <a href="ClassInChargeLogin.php" class="text-light"><small>Class In charge LogIn </small></a>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
   <!-- Footer -->
-  
+
   <!-- Argon Scripts -->
   <!-- Core -->
   <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
@@ -146,7 +150,7 @@ if (isset($_POST["but"])) {
     if ($result->num_rows > 0) {
 
 
-        echo "<script type='text/javascript'> window.location.href='studentCreate.php' </script>";
+        echo "<script type='text/javascript'> window.location.href='ClassInChargeEntry.php' </script>";
     } else {
         echo "<script type='text/javascript'> alert('LogIn Failed') </script>";
     }

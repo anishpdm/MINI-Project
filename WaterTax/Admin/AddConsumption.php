@@ -59,6 +59,12 @@
                             <a href="AddWaterTax.php">
                                 <i class="fas fa-circle-o-notch"></i>add water Tax</a>
                         </li>
+
+                        <li>
+                            <a href="generatebills.php">
+                                <i class="fas fa-circle-o-notch "></i> Generate Bills </a>
+                        </li>
+
                         <li>
                             <a href="register.php">
                                 <i class="fas fa-circle-o-notch "></i>Add User</a>
@@ -143,10 +149,10 @@
             <!-- MAIN CONTENT-->
             <div class="main-content">
                 <div class="section__content section__content--p30">
-                    <div class="container-fluid">                        
+                    <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-12">
-                                
+
                             </div>
                         </div>
                         <div class="container">
@@ -156,18 +162,39 @@
                         </div>
                         <div class="login-form">
                             <form action="" method="post">
-                                
+
                                 <div class="form-group">
-                                    <label>User ID</label>
-                                    <input class="au-input au-input--full" type="text" name="id" placeholder="ID of User">
+                                    <label> Consumer Number </label>
+                                    <input class="au-input au-input--full" type="text" name="id" placeholder="Consumer Number">
                                 </div>
                                 <div class="form-group">
                                     <label>Month</label>
-                                    <input class="au-input au-input--full" type="text" name="month" placeholder=" Month">
-                                </div>
+                                    <select name="month" class='form-control'>
+                                                 <option value="1"> Jan </option>
+                                                 <option value="2"> Feb </option>
+                                                 <option value="3"> Mar </option>
+                                                 <option value="4"> Apr </option>
+                                                 <option value="5"> May </option>
+                                                 <option value="6"> Jun </option>
+                                                 <option value="7"> Jul </option>
+                                                 <option value="8"> Aug </option>
+                                                 <option value="9"> Sep </option>
+                                                 <option value="10"> Oct </option>
+                                                 <option value="11"> Nov </option>
+                                                 <option value="12"> Dec </option>
+
+
+                                               </select>
+
+                                                                             </div>
                                 <div class="form-group">
                                     <label>Year</label>
-                                    <input class="au-input au-input--full" type="text" name="year" placeholder=" Year">
+                                    <select name="year" class='form-control'>
+                                                 <option value="2019"> 2019 </option>
+
+
+
+                                               </select>
                                 </div><div class="form-group">
                                     <label>Consumption in Unit</label>
                                     <input class="au-input au-input--full" type="text" name="Consum" placeholder=" Consumption">
@@ -178,13 +205,7 @@
                     </div>
                 </div>
             </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="copyright">
-                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -226,10 +247,12 @@
         $year = $_POST['year'];
         $cons = $_POST['Consum'];
         echo $id.$c_name;
-        $query = "insert into consumption(user_id,month,year,unit) 
-                VALUES('".$id."','".$month."','".$year."','".$cons."')";  
+        $query = "INSERT INTO `consumption`( `consumer_no`, `month`, `year`, `unit`)
+         VALUES ('".$id."','".$month."','".$year."','".$cons."')";
         $response = $conn->query($query);
         if($response){
+          echo "<script type='text/javascript'> alert('consumption added Succesfully ') </script>";
+
                 header('Location:./index.php');
         }
         }

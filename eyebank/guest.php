@@ -10,7 +10,20 @@ include './dbcon.php';
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" href="#">Online Eye Bank</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="guest.php">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="userlogin.php">LogOut</a>
+    </li>
 
+  </ul>
+</nav>
 
 <div class="main-panel">
     <div class="content-wrapper">
@@ -32,40 +45,47 @@ include './dbcon.php';
 
 <br>
 
-                           
+
                             <Button class='btn btn-success' value='$id' name='but'> Search </Button>
                          <br>
                             </form>
                             <div class='row'></div>
                             <?php
 
-                            
+
                             if (isset($_POST["but"])) {
                                     $serachString = $_POST["searchBox"];
-                                    $sql = "Select `name`, `address`, `blood_group`, mobile from user WHERE `blood_group`= '$serachString'";
+                                    $sql = "Select `name`, `streetname`, `housename`, `blood_group`, mobile from user WHERE `blood_group`= '$serachString'";
                                     $result = $conn->query($sql);
                                     if ($result->num_rows > 0) {
                                         echo " <br> <table class='table'>  ";
                                         echo " <tr>";
                                         echo " <th>NAME</th> ";
                                         echo " <th>Mobile</th> ";
-                                        echo " <th>Address</th> ";
+                                        echo " <th>House name</th> ";
+                                        echo " <th>street name</th> ";
+
                                         echo " <th>Blood Group</th> ";
                                         echo "</tr>  ";
                                         while ($row = $result->fetch_assoc()) {
                                         $name = $row["name"];
-                                        $address = $row["address"];
+                                        $housename = $row["housename"];
+
+                                        $address = $row["streetname"];
+
                                         $mobile = $row["mobile"];
                                         $blood_group = $row["blood_group"];
                                         echo " <tr>";
                                         echo " <td> $name </td>";
                                         echo " <td> $mobile </td>";
+                                        echo " <td> $housename </td>";
+
                                         echo " <td> $address </td>";
                                         echo " <td> $blood_group </td>";
                                         echo "</tr>  ";
                                         }
                                         echo "</table> ";
-                                    
+
                                     }
                                 }
                             ?>

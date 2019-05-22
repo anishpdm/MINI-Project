@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,20 +47,12 @@
                         </div>
                     </li>
 
-
-
                 </ul>
 
             </div>
         </nav>
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
-
-
-
-
-
-
 
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
@@ -74,15 +65,23 @@
                             <i class="mdi mdi-home menu-icon"></i>
                         </a>
                     </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="addeye.php">
+                            <span class="menu-title">Add Eye/Blood Bank  </span>
+                            <i class="mdi mdi-home menu-icon"></i>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#qnpaper" aria-expanded="false" aria-controls="students">
-                            <span class="menu-title"> Notifications </span>
+                            <span class="menu-title"> History </span>
                             <i class="menu-arrow"></i>
                             <i class="mdi mdi-crosshairs-gps menu-icon"></i>
                         </a>
                         <div class="collapse" id="qnpaper">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="adminNotificationList.php">View Notifications </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="adminNotificationList.php">View History </a></li>
 
                             </ul>
                             <ul class="nav flex-column sub-menu">
@@ -92,4 +91,4 @@
                         </div>
                     </li>
                 </ul>
-            </nav> 
+            </nav>

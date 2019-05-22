@@ -69,12 +69,26 @@ ob_start();
                                     </div>
                                 <div class="form-group">
                                         <label>Phone number</label>
-                                        <input class="au-input au-input--full" type="tel" name="phone" placeholder="Phone Number">
+                                        <input class="au-input au-input--full" type="tel" name="phone" placeholder="Phone Number" required>
                                         </div>
+
+
                                 <div class="form-group">
-                                        <label>Address</label>
-                                        <input class="au-input au-input--full" type="text" name="address" placeholder="Address">
+                                          <label>House Number </label>
+                                        <input class="au-input au-input--full" type="text" name="hno" placeholder="House number" required >
                                 </div>
+                                <div class="form-group">
+                                        <label>Street name </label>
+                                        <input class="au-input au-input--full" type="text" name="street" placeholder="Street" required>
+                                </div>
+                                <div class="form-group">
+                                        <label>Land mark </label>
+                                        <input class="au-input au-input--full" type="text" name="landmark" placeholder="Land mark" required>
+                                </div>
+
+
+
+
                                 <div class="form-group">
                                         <label>Pin-Code</label>
                                         <input class="au-input au-input--full" type="number" name="pin" placeholder="Pin-Code">
@@ -141,14 +155,17 @@ ob_start();
         $psw_one = $_POST['psw_one'];
         $psw_two = $_POST['psw_two'];
         $phone = $_POST['phone'];
-        $address = $_POST['address'];
+        $hno = $_POST['hno'];
+        $street = $_POST['street'];
+        $landmark= $_POST['landmark'];
         $pin = $_POST['pin'];
         $email = $_POST['email'];
         if($psw_one == $psw_two){
-            $query = "insert into users(name,username,password,mobile_no,address,pincode,email) 
-                      VALUES('".$name."','".$u_name."','".$psw_one."','".$phone."','".$address."','".$pin."','".$email."')"; 
+            $query = "insert into users(name,username,password,mobile_no,pincode,email,`HouseNo`, `Street`, `LandMark`)
+                      VALUES('".$name."','".$u_name."','".$psw_one."','".$phone."','".$pin."','".$email."','$hno','$street','$landmark')";
             $response = $conn->query($query);
             if($response){
+              
                 header('Location:../login/user_login.html');
             }
         }

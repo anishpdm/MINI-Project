@@ -62,6 +62,11 @@
                             <a href="register.php">
                                 <i class="fas fa-circle-o-notch "></i>Add User</a>
                         </li>
+
+                        <li>
+                            <a href="generatebills.php">
+                                <i class="fas fa-circle-o-notch "></i> Generate Bills </a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -142,7 +147,7 @@
             <!-- MAIN CONTENT-->
             <div class="main-content">
                 <div class="section__content section__content--p30">
-                    <div class="container-fluid">                        
+                    <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-12">
                                 <h2 class="title-1 m-b-40">All consumption</h2>
@@ -150,7 +155,7 @@
                                     <table class="table table-borderless table-striped table-earning">
                                         <thead>
                                             <tr>
-                                                <th>User Id</th>
+                                                <th>Consumer Number </th>
                                                 <th>Unit</th>
                                             </tr>
                                         </thead>
@@ -159,19 +164,19 @@
                                                 // echo "<h1>".$_SESSION['username']."</h1>";
                                                 if($_SESSION['username']){
                                                     //database properties
-                                                    
+
                                                     include '../dbConnection.php';
-                                        
+
                                                     //creating mysql connection
                                                     $conn = new mysqli($dbhost,$dbUser,$dbPass,$dbName);
                                                     //query
                                                     $query = "select * from consumption";
-                                        
+
                                                     $response = $conn->query($query);
                                                     if($response){
                                                         while($result = $response->fetch_assoc()){
                                                         echo"<tr>
-                                                                    <td>".$result['user_id']."</td>
+                                                                    <td>".$result['consumer_no']."</td>
                                                                     <td>".$result['unit']."</td>
                                                                 </tr>";
                                                         }
@@ -188,13 +193,7 @@
                             </div>
                         </div>
                         <br>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="copyright">
-                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>

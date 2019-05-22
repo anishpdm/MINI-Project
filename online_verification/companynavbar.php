@@ -75,10 +75,10 @@
                         </a>
                     </li>
 
-               
 
 
-                    
+
+
 
 
                     <li class="nav-item">
@@ -89,7 +89,8 @@
                         </a>
                         <div class="collapse" id="qnpaper">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="#"> Verify Employers </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="company_employer_add.php"> Add Employers </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="view_status.php"> View Status  </a></li>
 
                             </ul>
                         </div>
@@ -101,4 +102,4 @@
 
 
                 </ul>
-            </nav> 
+            </nav>

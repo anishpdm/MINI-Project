@@ -1,4 +1,7 @@
 <?php
+session_start();
+?>
+<?php
 include './dbcon.php';
 ?>
 <?php
@@ -20,7 +23,7 @@ include './studheader.php';
     </div>
     <!-- Page content -->
     <div class="container-fluid mt--7">
-     
+
         <div class="col-xl-8 order-xl-1">
           <div class="card bg-secondary shadow">
             <div class="card-header bg-white border-0">
@@ -36,7 +39,7 @@ include './studheader.php';
               <form method="POST">
                 <h6 class="heading-small text-muted mb-4"> Online Apply </h6>
                 <div class="pl-lg-4">
-              
+
 
 
 
@@ -44,7 +47,7 @@ include './studheader.php';
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-username"> Certificate Type  </label>
-                        <select class="form-control form-control-alternative" name="dept">
+                        <select class="form-control form-control-alternative" name="type">
 
 <option value="TCandCC">Transfer Certificate and Conduct Certificate </option>
 <option value="TC">Transfer Certificate Only </option>
@@ -57,7 +60,7 @@ include './studheader.php';
                       <div class="form-group">
                         <label class="form-control-label" for="input-email"> Message  </label>
                         <input name="text" type="text" id="input-username" class="form-control form-control-alternative" placeholder="Enter the Message" >
- 
+
 
 </div>
                     </div>
@@ -68,23 +71,23 @@ include './studheader.php';
 
 
 
-                  
-
-                
 
 
-                    
 
-                 
-                  
-            
+
+
+
+
+
+
+
               </form>
             </div>
           </div>
         </div>
       </div>
       <!-- Footer -->
-      
+
 
       <?php
 
@@ -95,12 +98,29 @@ include './studheader.php';
 
 if(isset($_POST['but'])){
 
-    
-echo "<script type='text/javascript'> alert('Pending') </script>";
-    
+  $id= $_SESSION['id'];
+
+  $type=$_POST['type'];
+
+  $msg=$_POST['text'];
+
+  $sql = "INSERT INTO `application`( `studentid`, `applicationtype`, `message`, `status`) VALUES
+  ($id,'$type','$msg',0)
+  ";
+  $result = $conn->query($sql);
+
+  if ($result === true) {
+    echo "<script type='text/javascript'> alert('Application submitted Succesfully ') </script>";
+    echo "<script>  window.location.href='apply.php'</script> ";
+  } else {
+   echo   $errorMessage=$conn->error;
+//echo "<script type='text/javascript'> alert('$errorMessage') </script>";
+  }
+
+
+
 
 
 }
 
 ?>
-

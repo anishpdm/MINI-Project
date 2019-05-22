@@ -10,21 +10,24 @@ if (isset($_POST["but"])) {
 
     $cname = $_POST["cname"];
 
-    $address = $_POST["address"];
+    $Housename = $_POST["Housename"];
+
+    $Streetname = $_POST["Streetname"];
+
 
     $bgroup = $_POST["bgroup"];
 
     $mob = $_POST["mob"];
     $email = $_POST["email"];
-    
-
-    
 
 
 
-    $sql = "INSERT INTO `user`( `name`, `address`, `blood_group`, `pin_code`, `mobile`, `email`,
+
+
+
+    $sql = "INSERT INTO `user`( `name`, `streetname`, `housename`, `blood_group`, `pin_code`, `mobile`, `email`,
      `username`, `password`, `status`) VALUES
-    ('$cname','$address','$bgroup','$cpin','$mob','$email','$Username','$Password',0)
+    ('$cname','$Housename'.'$Streetname','$bgroup','$cpin','$mob','$email','$Username','$Password',0)
       ";
 
     $result = $conn->query($sql);
@@ -85,9 +88,7 @@ if (isset($_POST["but"])) {
                                     <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder=" name" name="cname" pattern="[A-Za-z]+" required >
                                 </div>
 
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="address" name="address" required >
-                                </div>
+
 
                                 <div class="form-group">
                                 <select class='form-control' name='bgroup' >
@@ -100,6 +101,18 @@ if (isset($_POST["but"])) {
      </select>
                                 </div>
 
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Enter Housename" name="Housename" required>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Enter Streetname" name="Streetname" required>
+                                </div>
+
+
+
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="pincode" name="cpin" pattern="[6]{1}[0-9]{5}" required>
                                 </div>
@@ -110,6 +123,10 @@ if (isset($_POST["but"])) {
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email Id" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
                                 </div>
+
+
+
+
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Enter username" name="Username" required>
                                 </div>
@@ -119,8 +136,8 @@ if (isset($_POST["but"])) {
                                 </div>
                                 <div class="mt-3">
                                     <button class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" name="but"> REGISTER </button>
-                                    
-                                    
+
+
 \
                                     <a class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" href="userlogin.php"> User LogIn   </a>
                                     <a class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" href="index.php"> Admin LogIn   </a>
@@ -149,4 +166,4 @@ if (isset($_POST["but"])) {
     <!-- endinject -->
 </body>
 
-</html> 
+</html>

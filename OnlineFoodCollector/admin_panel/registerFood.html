@@ -53,15 +53,29 @@ ob_start();
                             <form action="" method="post">
                                 <div class="form-group">
                                     <label></label>
-                                    <input  class="au-input au-input--full" type="hidden" name="member_id" value="<?php 
+                                    <input  class="au-input au-input--full" type="hidden" name="member_id" value="<?php
                                         session_start();
                                         echo $_SESSION['memb_id']
                                     ?>" placeholder="Member ID">
                                 </div>
                                 <div class="form-group">
-                                    <label>Food Details</label>
+                                    <label> Food Type</label>
+
+                                    Veg <input  type="radio" name="type" value="Veg"> Non-Veg <input type="radio" name="type" value="Non-Veg">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Food Description</label>
                                     <textarea class="form-control" placeholder="Enter Food Details" name="food_details"  cols="15" rows="5" required></textarea>
 
+                                </div>
+
+
+
+
+                                <div class="form-group">
+                                    <label>Quantity</label>
+                                    <input type="number" name="qty" class='form-control'>
                                 </div>
                                 <!-- <div class="login-checkbox">
                                     <label>
@@ -102,7 +116,7 @@ ob_start();
     <!-- Main JS-->
     <script src="js/main.js"></script>
     <?php
-    session_start();
+
     echo $_SESSION['ADMIN_CREATE']."cdchv";
     //database properties
     $dbhost = "localhost";
@@ -113,10 +127,15 @@ ob_start();
     $conn = new mysqli($dbhost,$dbUser,$dbPass,$dbName);
     if($_SERVER['REQUEST_METHOD']==='POST'){
         $member_id = $_POST['member_id'];
+
+        $type = $_POST['type'];
+
+        $qty = $_POST['qty'];
+
+
         $food_details = $_POST['food_details'];
-        $acknowledgement = $_POST['acknowledgement'];
-                $query = "insert into fooddetails(member_id,food__details,added_date,acknowledgement) 
-                VALUES('".$member_id."','".$food_details."',Now(),0)";  
+                $query = "insert into fooddetails(member_id,`type`, `quantity`, `description`,added_date,acknowledgement)
+                VALUES('".$member_id."', '".$type."','".$qty."','".$food_details."' ,Now(),0)";
                 $response = $conn->query($query);
                 if($response){
 

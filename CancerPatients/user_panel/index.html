@@ -160,11 +160,15 @@ ob_start();
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Functions</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
+
+                              <li>
+                                  <a href="index.html">View Profile</a>
+                              </li>
                                 <li>
                                     <a href="index5.html">Apply for Needs</a>
                                 </li>
                                 <li>
-                                    <a href="index.html">Acknowledgements</a>
+                                    <a href="viewstatus.php">Acknowledgements</a>
                                 </li>
                                 <!-- <li>
                                     <a href="index3.html">All Users</a>
@@ -252,7 +256,7 @@ ob_start();
                                                     $conn = new mysqli($dbhost,$dbUser,$dbPass,$dbName);
                                                     //query
                                                     $query = "select * from patients";
-                                        
+
                                                     $response = $conn->query($query);
                                                     if($response){
                                                         while($result = $response->fetch_assoc()){

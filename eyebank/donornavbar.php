@@ -80,16 +80,22 @@
                             <span class="menu-title"> Search   </span>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="viewnearby.php">
+                            <span class="menu-title"> View Nearby Blood/Eye Banks   </span>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="userNotifications.php">
                             <span class="menu-title"> Notifications  </span>
                         </a>
                     </li>
 
-               
 
 
-                    
+
+
 
 
                     <!-- <li class="nav-item">
@@ -112,4 +118,4 @@
 
 
                 </ul>
-            </nav> 
+            </nav>

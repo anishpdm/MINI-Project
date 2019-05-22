@@ -12,7 +12,7 @@ if (isset($_POST["but"])) {
 
     if ($result->num_rows > 0) {
 
-    
+
 
 
         echo "<script type='text/javascript'> window.location.href='userapprove.php' </script>";
@@ -45,6 +45,8 @@ if (isset($_POST["but"])) {
     <!-- endinject -->
     <!-- <link rel="shortcut icon" href="images/favicon.png" /> -->
 </head>
+
+
 
 <body>
     <div class="container-scroller">
@@ -96,4 +98,4 @@ if (isset($_POST["but"])) {
     <!-- endinject -->
 </body>
 
-</html> 
+</html>

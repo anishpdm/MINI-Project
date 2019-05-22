@@ -164,7 +164,7 @@ ob_start();
                                     <a href="index5.html">Approve Patients</a>
                                 </li>
                                 <li>
-                                    <a href="index.html">Approve Expenses</a>
+                                    <a href="approvebenifits.php">Approve Requests </a>
                                 </li>
                                 <!-- <li>
                                     <a href="index3.html">All Users</a>
@@ -259,7 +259,7 @@ ob_start();
                                                     $conn = new mysqli($dbhost,$dbUser,$dbPass,$dbName);
                                                     //query
                                                     $query = "select * from patients";
-                                        
+
                                                     $response = $conn->query($query);
                                                     if($response){
                                                         while($result = $response->fetch_assoc()){

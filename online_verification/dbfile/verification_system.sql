@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 07, 2019 at 07:29 AM
+-- Generation Time: Apr 16, 2019 at 10:40 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.39
 
@@ -39,7 +39,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`) VALUES
-(1, 'aiswarya', 'aishu234');
+(1, 'anish', 'anish123');
 
 -- --------------------------------------------------------
 
@@ -64,7 +64,6 @@ CREATE TABLE `company` (
 
 INSERT INTO `company` (`id`, `company_name`, `company_regno`, `place`, `pincode`, `username`, `password`, `status`) VALUES
 (1, 'Test', 7865876, 'EKM', 67858, 'admin', '111', 1),
-(2, 'TEST C', 6786, 'PANDALAM', 668969, 'hello', '12345', 0),
 (3, 'HJGJK', 0, 'KJGBKJG', 897, '09709', '089', 0);
 
 -- --------------------------------------------------------
@@ -77,24 +76,20 @@ CREATE TABLE `employers` (
   `id` int(11) NOT NULL,
   `company_id` int(11) NOT NULL,
   `employer_name` varchar(255) NOT NULL,
-  `mob_no` int(11) NOT NULL,
+  `mob_no` bigint(11) NOT NULL,
   `email` varchar(255) NOT NULL,
   `gender` varchar(255) NOT NULL,
-  `status` int(11) NOT NULL
+  `status` int(11) NOT NULL,
+  `documents` varchar(100) NOT NULL,
+  `eduqualification` varchar(33) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `employer_documents`
+-- Dumping data for table `employers`
 --
 
-CREATE TABLE `employer_documents` (
-  `id` int(11) NOT NULL,
-  `employer_id` int(11) NOT NULL,
-  `documents` varchar(255) NOT NULL,
-  `educational_qualification` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `employers` (`id`, `company_id`, `employer_name`, `mob_no`, `email`, `gender`, `status`, `documents`, `eduqualification`) VALUES
+(1, 1, 'ANISH', 2147483647, 'a@g.com', '', -1, 'documents/challenge.jpg', 'Btech');
 
 --
 -- Indexes for dumped tables
@@ -119,12 +114,6 @@ ALTER TABLE `employers`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `employer_documents`
---
-ALTER TABLE `employer_documents`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -144,13 +133,7 @@ ALTER TABLE `company`
 -- AUTO_INCREMENT for table `employers`
 --
 ALTER TABLE `employers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `employer_documents`
---
-ALTER TABLE `employer_documents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

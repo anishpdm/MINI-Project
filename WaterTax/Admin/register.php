@@ -53,7 +53,7 @@ ob_start();
                             <form action="" method="post">
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input class="au-input au-input--full" type="text" name="name" placeholder="Full Name">
+                                    <input class="au-input au-input--full" type="text" name="name" placeholder="Full Name" pattern="[A-Za-z]+" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Username</label>
@@ -143,8 +143,8 @@ ob_start();
         $place = $_POST['place'];
         $email = $_POST['email'];
         if($psw_one === $psw_two){
-            $query = "insert into user(name,username,password,mobile_number,address,place,email_id) 
-            VALUES('".$name."','".$u_name."','".$psw_one."','".$phone."','".$address."','".$place."','".$email."')";  
+            $query = "insert into user(name,username,password,mobile_number,address,place,email_id)
+            VALUES('".$name."','".$u_name."','".$psw_one."','".$phone."','".$address."','".$place."','".$email."')";
             $response = $conn->query($query);
             if($response){
                 header('Location:../login/index_user.php');

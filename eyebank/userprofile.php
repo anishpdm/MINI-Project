@@ -25,17 +25,20 @@ include './dbcon.php';
  $sId=   $_SESSION['Cid'] ;
 
 
-$sql = "SELECT  `name`, `address`, `blood_group`, `pin_code`, `mobile`, `email`  FROM `user` WHERE `id`=$sId";
+$sql = "SELECT  `name`, `streetname`, `housename`, `blood_group`, `pin_code`, `mobile`, `email`  FROM `user` WHERE `id`=$sId";
   $result = $conn->query($sql);
 
   if ($result->num_rows > 0) {
     echo "<form method='POST'> <table class='table'>  ";
 
-    
+
     // output data of each row
     while ($row = $result->fetch_assoc()) {
       $Name = $row["name"];
-      $address = $row["address"];
+      $streetname = $row["streetname"];
+
+      $housename = $row["housename"];
+
 
       $blood_group = $row["blood_group"];
 
@@ -45,13 +48,15 @@ $sql = "SELECT  `name`, `address`, `blood_group`, `pin_code`, `mobile`, `email` 
       $email = $row["email"];
 
 
-    
 
-     
+
+
 
 
      echo " <tr> <td> Name</td> <td> $Name </td> </tr>  ";
-     echo " <tr> <td> Address </td> <td> $address </td> </tr>  ";
+     echo " <tr> <td> Street name </td> <td> $streetname </td> </tr>  ";
+     echo " <tr> <td> House name </td> <td> $housename </td> </tr>  ";
+
      echo " <tr> <td> Blood Group </td> <td> $blood_group </td> </tr>  ";
      echo " <tr> <td> Pincode </td> <td> $pin_code </td> </tr>  ";
 
@@ -59,7 +64,8 @@ $sql = "SELECT  `name`, `address`, `blood_group`, `pin_code`, `mobile`, `email` 
 
      echo " <tr> <td> Email </td> <td> $email </td> </tr>  ";
 
-   
+     echo " <tr> <td>  </td> <td> <a href='deactivate.php?id=$sId'>DEACTIVATE </a> </td> </tr>  ";
+
 
 
 
@@ -76,7 +82,7 @@ $sql = "SELECT  `name`, `address`, `blood_group`, `pin_code`, `mobile`, `email` 
 
 ?>
                             <div class='row'>
-                                
+
 
 
                     </div>
@@ -111,7 +117,7 @@ $sql = "SELECT  `name`, `address`, `blood_group`, `pin_code`, `mobile`, `email` 
 <!-- End custom js for this page-->
 </body>
 
-</html> 
+</html>
 
 <?php
 
@@ -122,7 +128,7 @@ if (isset($_POST["but"])) {
     $last_date = $_POST["last_date"];
     $Subject = $_POST["Subject"];
     $exam_name = $_POST["exam_name"];
-   
+
 
     $sql = " INSERT INTO `Mains_Exam_Create`(`ExamCode`, `ExamName`, `LastDate`, `Subject`) VALUES ('$exam_code','$exam_name','$last_date','$Subject') ";
 
@@ -130,14 +136,14 @@ if (isset($_POST["but"])) {
 
     if ($result===TRUE) {
 
-       
+
         echo "<script type='text/javascript'> alert('Main Exam Created Succesfully') </script>";
 
         // echo "<script type='text/javascript'> alert('Succcess') </script>";
 
         // echo "<script type='text/javascript'> window.location.href='index.php' </script>";
     } else {
-    
+
         echo "<script type='text/javascript'> alert('Error') </script>";
     }
 }
